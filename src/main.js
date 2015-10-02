@@ -1,5 +1,5 @@
 require([
-    'text!views/app.html',
+    'text!../views/app.html',
     'view_models/app',
     'renderer'
 ], function(appView, App, renderer ) {
