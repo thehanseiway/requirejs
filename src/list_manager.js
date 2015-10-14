@@ -1,9 +1,11 @@
-define(['list', 'exports'], function( List, exports ) {
+define(['list'], function( List ) {
     'use strict';
 
     function createList( listId ) {
         return new List(listId);
     }
 
-    exports.createList = createList;
-})
+    return {
+        createList : createList
+    };
+});

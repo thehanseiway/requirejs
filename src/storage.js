@@ -17,6 +17,13 @@ define(function() {
         for ( x = 0; x < length; x += 1) {
             lists.push( localStorage.key(x) );
         }
+
+        return lists;
     }
 
+    return {
+        save : save,
+        load : load,
+        getLists : getLists
+    };
 });

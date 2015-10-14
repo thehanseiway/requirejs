@@ -3,8 +3,8 @@
         <h1 data-bind="text: title"></h1>
         <div class="controls">
             <div class="row">
-                <input data-bind="attr: { placeholder: placeholderText }">
-                <button data-bind="text: createText, enable: enableAdd"></button>
+                <input data-bind="attr: { placeholder: placeholderText}, value: listName">
+                <button data-bind="text: createText, enable: enableAdd, event: { click: addListHandler }"></button>
             </div>
             <div class="row">
                 <select name="" class="saved_list">
