@@ -5,9 +5,10 @@ define([
     'task_manager',
     'renderer',
     'view_models/task',
-    'text!views/task.html'
+    'text!views/task.html',
+    'smokesignals'
 ],
-function( listManager, ko, uiStrings, taskManager, renderer, TaskViewModel, taskView ) {
+function( listManager, ko, uiStrings, taskManager, renderer, TaskViewModel, taskView, smokesignals ) {
     'use strict';
 
     function ListViewModel() {
@@ -27,6 +28,7 @@ function( listManager, ko, uiStrings, taskManager, renderer, TaskViewModel, task
             }
         }, this);
 
+        // Add task method (start)
         this.addTask = function () {
             var task = taskManager.createTask(this.taskName());
             var container = document.querySelector('.todo_app ul');
@@ -39,12 +41,43 @@ function( listManager, ko, uiStrings, taskManager, renderer, TaskViewModel, task
             taskViewModel.completed(false);
 
             renderer.render(container, taskView, taskViewModel, true);
+
+            smokesignals.convert(taskViewModel);
+            taskViewModel.on('taskremoved', this.removeTaskHandler);
+            taskViewModel.on('taskcompleted', this.completeTaskHandler(taskViewModel));
+
             this.taskName('');
-            console.log(taskViewModel);
             return taskViewModel;
         };
 
         this.addTaskHandler = this.addTask.bind(this);
+        // Add task method (end)
+
+        // Remove task method (start)
+        this.removeTask = function ( index ) {
+            this.list.tasks.splice(index, 1);
+        };
+
+        this.removeTaskHandler = this.removeTask.bind(this);
+        // Remove task method (end)
+
+        // Complete task method (start)
+        this.completeTask = function ( taskViewModel ) {
+            var taskIndex = taskViewModel.id.split('-')[1];
+            this.list.tasks[taskIndex].completed = !this.list.tasks[taskIndex].completed;
+        };
+
+        this.completeTaskHandler = this.completeTask.bind(this);
+        // Complete task method (end)
+
+        // Save list method (start)
+        this.saveList = function () {
+            listManager.saveList(this.list);
+        };
+
+        this.saveListHandler = this.saveList.bind(this);
+        // Save list method (end)
+
     }
 
     return ListViewModel;

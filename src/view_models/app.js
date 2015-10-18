@@ -46,7 +46,7 @@ define([
         this.removeList = function( container ) {
             ko.cleanNode(container);
             container.innerHTML = '';
-        }
+        };
     }
 
     return App;
