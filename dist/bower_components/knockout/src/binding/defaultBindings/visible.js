@@ -1,0 +1,1 @@
+ko.bindingHandlers.visible={update:function(e,t){var n=ko.utils.unwrapObservable(t()),r=e.style.display!="none";n&&!r?e.style.display="":!n&&r&&(e.style.display="none")}};

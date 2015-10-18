@@ -1,0 +1,1 @@
+ko.bindingHandlers.style={update:function(e,t){var n=ko.utils.unwrapObservable(t()||{});ko.utils.objectForEach(n,function(t,n){n=ko.utils.unwrapObservable(n);if(n===null||n===undefined||n===!1)n="";e.style[t]=n})}};

@@ -1,0 +1,1 @@
+define(["task"],function(e){"use strict";function t(t){return new e(t)}return{createTask:t}});

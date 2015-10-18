@@ -1,0 +1,1 @@
+ko.bindingHandlers.enable={update:function(e,t){var n=ko.utils.unwrapObservable(t());n&&e.disabled?e.removeAttribute("disabled"):!n&&!e.disabled&&(e.disabled=!0)}},ko.bindingHandlers.disable={update:function(e,t){ko.bindingHandlers.enable.update(e,function(){return!ko.utils.unwrapObservable(t())})}};

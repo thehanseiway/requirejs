@@ -1,0 +1,7 @@
+<li data-bind="attr: { id: id}, css: completedTaskClass">
+    <div>
+        <input type="checkbox" name="completed" data-bind="attr: { checked: completed }, event: { click: toggleTaskCompleteHandler }">
+        <label for="task" data-bind="text: name"></label>
+        <a href="#" class="delete" title="Remove task" data-bind="event: { click: deleteTaskHandler }">x</a>
+    </div>
+</li>

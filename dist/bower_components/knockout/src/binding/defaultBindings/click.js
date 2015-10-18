@@ -1,0 +1,1 @@
+makeEventHandlerShortcut("click");

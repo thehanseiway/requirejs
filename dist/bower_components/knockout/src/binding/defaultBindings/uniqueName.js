@@ -1,0 +1,1 @@
+ko.bindingHandlers.uniqueName={init:function(e,t){if(t()){var n="ko_unique_"+ ++ko.bindingHandlers.uniqueName.currentIndex;ko.utils.setElementName(e,n)}}},ko.bindingHandlers.uniqueName.currentIndex=0;
